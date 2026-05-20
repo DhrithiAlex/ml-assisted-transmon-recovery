@@ -1,0 +1,24 @@
+[project]
+name = "transmon-recovery"
+version = "0.1.0"
+description = "ML-assisted recovery of transmon Hamiltonian parameters (EJ, EC, g) from synthetic noisy spectroscopy"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Dhrithi Alex"}
+]
+keywords = ["transmon", "quantum-computing", "superconducting-qubits", "machine-learning", "hamiltonian", "spectroscopy"]
+
+dependencies = [
+    "numpy>=1.21",
+    "matplotlib>=3.5",
+    "scipy>=1.7",
+    "scikit-learn>=1.0",
+]
+
+[project.scripts]
+transmon-recovery = "scripts.run_pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
