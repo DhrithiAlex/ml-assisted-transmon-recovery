@@ -1,0 +1,59 @@
+=================================================================
+  Transmon Hamiltonian Recovery – ML Pipeline
+=================================================================
+
+[1/6] Generating example spectroscopy trace …
+[2/6] Generating charge-dispersion curve …
+
+[3/6] Building training dataset …
+Generating 600 synthetic spectroscopy samples …
+  100/600 done
+  200/600 done
+  300/600 done
+  400/600 done
+  500/600 done
+  600/600 done
+
+[4/6] Training models …
+  → MLP …
+  → Gaussian Process …
+/usr/local/lib/python3.12/dist-packages/sklearn/gaussian_process/kernels.py:452: ConvergenceWarning: The optimal value found for dimension 0 of parameter k1__k1__constant_value is close to the specified upper bound 1000.0. Increasing the bound and calling fit again may find a better value.
+  warnings.warn(
+
+[5/6] Evaluation on test set …
+
+Param      GP MAE    GP R²     MLP MAE   MLP R²
+-----------------------------------------------
+EJ         2.6602   0.6851      2.2886   0.7406
+EC         0.0517   0.7288      0.0435   0.8031
+g          0.0013   0.9994      0.0024   0.9980
+
+[6/6] Generating output figures …
+
+  Running noise-robustness scan (MLP, 5 noise levels) …
+  noise_sigma = 0.002
+Generating 200 synthetic spectroscopy samples …
+  100/200 done
+  200/200 done
+  noise_sigma = 0.005
+Generating 200 synthetic spectroscopy samples …
+  100/200 done
+  200/200 done
+  noise_sigma = 0.010
+Generating 200 synthetic spectroscopy samples …
+  100/200 done
+  200/200 done
+  noise_sigma = 0.020
+Generating 200 synthetic spectroscopy samples …
+  100/200 done
+  200/200 done
+  noise_sigma = 0.050
+Generating 200 synthetic spectroscopy samples …
+  100/200 done
+  200/200 done
+
+✓  All figures saved to /mnt/user-data/outputs/
+
+Summary: the MLP and GP both recover EJ, EC, g from noisy
+spectroscopy data.  GP additionally provides calibrated
+posterior uncertainties — key for Bayesian device calibration.
